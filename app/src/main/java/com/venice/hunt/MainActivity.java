@@ -73,6 +73,22 @@ public class MainActivity extends AppCompatActivity {
             else toast("Termux ইনস্টল করা নেই");
         });
 
+
+        findViewById(R.id.btnRecon).setOnClickListener(v ->
+                run("python ~/hunt.py recon"));
+
+        findViewById(R.id.btnWeb).setOnClickListener(v ->
+                run("python ~/hunt.py web"));
+
+        findViewById(R.id.btnPassword).setOnClickListener(v ->
+                run("python ~/hunt.py pw"));
+
+        findViewById(R.id.btnAuto).setOnClickListener(v ->
+                run("python ~/hunt.py auto"));
+
+        findViewById(R.id.btnResults).setOnClickListener(v ->
+                run("find ~/hunt-out -maxdepth 3 -type f -print 2>/dev/null"));
+
         if (prefs.getBoolean("first", true)) {
             prefs.edit().putBoolean("first", false).apply();
             addCommand("cd ~ && python hunt.py");
